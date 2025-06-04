@@ -66,8 +66,8 @@ header {
 } */
 
 .logo {
-    max-height: 500px; /* Logo menor e mais integrada */
-    margin-bottom: 15px; /* Espaço abaixo da logo */
+    max-height: 380px; /* Logo menor e mais integrada */
+    margin-bottom: 6px; /* Espaço abaixo da logo */
     /* Remover borda arredondada se a logo já tiver transparência */
 }
 
