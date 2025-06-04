@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Fish - Fil茅 de Til谩pia de Qualidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Definindo as cores da Grid Fish - Nova Paleta com Laranja como Destaque */
+        :root {
+            --primary-blue-light: #62c0c1; /* Azul-谩gua principal */
+            --secondary-green-teal: #00ceaa; /* Verde teal para CTA */
+            --tertiary-orange-highlight: #f8ad5a; /* Laranja suave de destaque - NOVO USO */
+            --accent-orange-detail: #f8ad5a; /* Laranja suave de detalhe (mantido igual ao highlight se for a mesma cor) */
+
+            --text-dark: #333; /* Texto escuro padr茫o */
+            --text-light: #555; /* Texto cinza suave */
+            --bg-page: #F8F8F8; /* Fundo geral da p谩gina (cinza muito claro) */
+            --bg-card: #FFFFFF; /* Fundo dos cards e container principal */
+            --border-subtle: rgba(0, 206, 170, 0.2); /* Borda suave baseada no verde teal */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-page); /* Fundo geral da p谩gina */
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Para melhor renderiza莽茫o de fontes */
+            -moz-osx-font-smoothing: grayscale; /* Para melhor renderiza莽茫o de fontes */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: var(--bg-card);
+            border-radius: 12px; /* Mais arredondado */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+            overflow: hidden; /* Garante que os cantos arredondados sejam respeitados */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 25px 30px; /* Mais padding para o cabe莽alho */
+            background-color: var(--tertiary-orange-highlight); /* Fundo do cabe莽alho em laranja */
+            border-radius: 12px 12px 0 0; /* Arredondamento do container */
+            margin-bottom: 30px;
+            box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.05); /* Sombra interna para profundidade */
+        }
+
+        .logo {
+            max-height: 90px; /* Logo um pouco maior */
+            margin-right: 25px;
+            border-radius: 8px; /* Pequeno arredondamento na logo, se for quadrada */
+        }
+
+        header h1 {
+            color: var(--primary-blue-light); /* T铆tulo em azul-谩gua */
+            font-weight: 700;
+            margin: 0;
+            font-size: 2.8em; /* T铆tulo maior */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+            letter-spacing: -0.5px; /* Ajuste para melhor leitura */
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-light);
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        section {
+            padding: 0 30px; /* Padding para as se莽玫es */
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-blue-light); /* T铆tulos em azul-谩gua */
+            font-weight: 700;
+            border-bottom: 3px solid var(--accent-orange-detail); /* Linha divis贸ria em laranja */
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: left;
+        }
+
+        /* Estilos para o FAQ sanfonado */
+        .faq-item {
+            margin-bottom: 18px; /* Mais espa莽o entre os itens do FAQ */
+        }
+
+        .faq-question {
+            background-color: var(--bg-page); /* Fundo da pergunta similar ao da p谩gina */
+            padding: 18px 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(98, 192, 193, 0.3); /* Borda suave azul-谩gua */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: var(--text-dark); /* Pergunta em texto escuro */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0; /* Um cinza um pouco mais escuro no hover */
+            border-color: var(--primary-blue-light); /* Borda fica mais intensa no hover */
+        }
+
+        .faq-question.active {
+            border-color: var(--secondary-green-teal); /* Borda verde teal quando ativa */
+            background-color: #eafcf8; /* Fundo mais claro quando ativa */
+        }
+
+        .faq-question .arrow {
+            font-size: 1.3em;
+            transition: transform 0.3s ease;
+            color: var(--primary-blue-light); /* Cor da seta */
+        }
+
+        .faq-question.active .arrow {
+            transform: rotate(90deg);
+            color: var(--secondary-green-teal); /* Seta verde teal quando ativa */
+        }
+
+        .faq-answer {
+            background-color: #fff; /* Fundo branco para a resposta */
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Transi莽茫o mais suave */
+            border-left: 5px solid var(--accent-orange-detail); /* Borda lateral laranja */
+            margin-bottom: 0; /* Removido margin-bottom para n茫o duplicar com o faq-item */
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .faq-answer p {
+            padding: 15px 0; /* Mais padding para o texto da resposta */
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .faq-answer.active {
+            max-height: 250px; /* Aumentado o max-height para acomodar mais texto */
+            padding: 15px 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        ul li {
+            background-color: var(--bg-page); /* Fundo similar ao da p谩gina */
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 6px solid var(--primary-blue-light); /* Borda azul-谩gua mais grossa */
+            color: var(--text-dark);
+            font-weight: 400;
+            transition: background-color 0.2s ease;
+        }
+
+        ul li:hover {
+            background-color: #eaf7f7; /* Leve hover no item da lista */
+        }
+
+        .info-card {
+            background-color: var(--tertiary-orange-highlight); /* Fundo do card de informa莽茫o em laranja */
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(248, 173, 90, 0.2); /* Sombra mais intensa do laranja */
+        }
+
+        .info-card strong {
+            color: var(--primary-blue-light); /* Destaque em azul-谩gua no card */
+            font-size: 1.4em;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .info-card p {
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .call-to-action {
+            text-align: center;
+            padding: 30px; /* Mais padding para a se莽茫o de CTA */
+            background-color: var(--bg-card); /* Fundo branco para a se莽茫o de CTA */
+            border-top: 1px solid var(--border-subtle);
+            border-radius: 0 0 12px 12px; /* Arredondamento do container */
+        }
+
+        .call-to-action h2 {
+            border-bottom: none; /* Remover borda de baixo */
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .call-to-action p {
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--secondary-green-teal); /* Verde teal da nova paleta */
+            color: #fff;
+            padding: 18px 35px; /* Bot茫o maior */
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em; /* Texto do bot茫o maior */
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 206, 170, 0.4); /* Sombra mais pronunciada do verde teal */
+        }
+
+        .whatsapp-button:hover {
+            background-color: #00b395; /* Verde teal mais escuro ao passar o mouse */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 206, 170, 0.5); /* Sombra mais intensa no hover */
+        }
+
+        .whatsapp-button .icon {
+            margin-right: 12px;
+            font-size: 1.6em;
+        }
+
+        .contact-number {
+            margin-top: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-blue-light); /* N煤mero em azul-谩gua */
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 30px;
+            margin-top: 0; /* N茫o precisa de margem superior se o CTA j谩 tem padding */
+            background-color: var(--bg-page); /* Fundo do rodap茅 igual ao da p谩gina */
+            border-top: 1px solid var(--border-subtle);
+            border-radius: 0 0 12px 12px; /* Arredondamento do container */
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="sua_logo.png" alt="Logo Grid Fish" class="logo">
+            <div>
+                <h1>Grid Fish</h1>
+                <p>Fil茅 de Til谩pia de Alta Qualidade</p>
+            </div>
+        </header>
+
+        <section>
+            <h2>馃摳 Veja a Qualidade Grid Fish de Perto</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="text-align: center;">
+                    <img src="images/foto_1.png" alt="Fil茅 de Til谩pia Fresco" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 5px;">Fil茅 de Til谩pia Embalado a V谩cuo</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="images/foto_2.png" alt="Detalhe do Fil茅 de Til谩pia" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 5px;">Pureza e Frescor Garantidos</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="images/foto_3.png" alt="Psicultura Grid Fish" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 5px;">Nossa Cria莽茫o no Rio Parana铆ba</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="images/foto_4.png" alt="Peixes Saud谩veis na Psicultura" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 5px;">Qualidade que Come莽a na 脕gua</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>鉂� D煤vidas Frequentes</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃摝 O fil茅 tem banho de gelo?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>N茫o. Os fil茅s s茫o embalados a v谩cuo, sem banho de gelo, garantindo a pureza e o peso real do produto.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃殮 Entrega menos de 10 kg?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>N茫o. Por quest玫es log铆sticas, o pedido m铆nimo 茅 de 10 kg.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃鈥嶐煃� Vende para pessoa f铆sica?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, desde que seja feito o pedido m铆nimo de 10 kg.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃挵 Qual a forma de pagamento?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Aceitamos Pix ou dinheiro, para sua maior comodidade e agilidade.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃摝 Como o produto 茅 embalado?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>O fil茅 茅 embalado a v谩cuo, em pacotes de aproximadamente 1 kg cada. O pedido 茅 entregue em fardos selados de 10 kg, garantindo a integridade.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃悷 De onde v锚m os peixes?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nossos peixes s茫o criados no Rio Parana铆ba, em 谩gua limpa. Isso garante um fil茅 de alt铆ssima qualidade, com sabor puro e sem gosto de terra ou qualquer sabor indesejado.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>馃棑锔� Como funcionam as datas de entrega?</span>
+                    <span class="arrow">></span>
+                </div>
+                <div class="faq-answer">
+                    <p>As entregas ocorrem a cada 15 dias. A data exata para sua regi茫o pode ser consultada facilmente pelo nosso WhatsApp, garantindo seu planejamento.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>馃搷 Cidades Atendidas</h2>
+            <ul>
+                <li>Acre煤na - GO</li>
+                <li>Aragar莽as - GO</li>
+                <li>Barra do Gar莽as - MT</li>
+                <li>Bom Jardim - GO</li>
+                <li>Caiap么nia - GO</li>
+                <li>Goi芒nia - GO</li>
+                <li>Guap贸 - GO</li>
+                <li>Indiara - GO</li>
+                <li>Paranaiguara - GO</li>
+                <li>Piranhas - GO</li>
+                <li>Santa Helena - GO</li>
+                <li>S茫o Sim茫o - GO</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Detalhes do Pedido</h2>
+            <div class="info-card">
+                <strong>馃捀 Pre莽o do fil茅:</strong>
+                <p>R$ 40,00 por quilo</p>
+            </div>
+            <div class="info-card">
+                <strong>馃摝 Pedido m铆nimo:</strong>
+                <p>10 kg</p>
+            </div>
+        </section>
+
+        <section class="call-to-action">
+            <h2>Fa莽a seu pedido agora!</h2>
+            <p>Entre em contato conosco pelo WhatsApp para tirar suas d煤vidas e garantir seu fil茅 de til谩pia Grid Fish.</p>
+            <a href="https://api.whatsapp.com/send?phone=5564999699413&text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido%20de%20fil%C3%A9%20de%20til%C3%Aapia!" target="_blank" class="whatsapp-button">
+                <span class="icon"></span> 馃摬 Fazer Pedido via WhatsApp
+            </a>
+            <p class="contact-number"> (64) 9 9969-9413</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Grid Fish. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+
+                    document.querySelectorAll('.faq-question.active').forEach(activeQuestion => {
+                        if (activeQuestion !== this) {
+                            activeQuestion.classList.remove('active');
+                            activeQuestion.nextElementSibling.classList.remove('active');
+                        }
+                    });
+
+                    this.classList.toggle('active');
+                    answer.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
