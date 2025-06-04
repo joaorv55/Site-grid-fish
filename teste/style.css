@@ -1,0 +1,480 @@
+
+
+/* Definindo as cores da Grid Fish - Nova Paleta com Laranja como Destaque */
+:root {
+    --primary-blue-light: #62c0c1; /* Azul-água principal */
+    --secondary-green-teal: #00ceaa; /* Verde teal para CTA */
+    --tertiary-orange-highlight: #f8ad5a; /* Laranja suave de destaque */
+    --accent-orange-detail: #f8ad5a; /* Laranja suave de detalhe */
+
+    --text-dark: #333; /* Texto escuro padrão */
+    --text-light: #555; /* Texto cinza suave */
+    --bg-page: #f0f4f8; /* Fundo geral da página (azul muito claro/cinza) */
+    --bg-card: #FFFFFF; /* Fundo dos cards e container principal */
+    --border-subtle: rgba(98, 192, 193, 0.2); /* Borda suave baseada no azul-água */
+    --white: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover-color: rgba(0, 0, 0, 0.15);
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif; /* Adicionando Roboto como secundária se Poppins não carregar */
+}
+
+body {
+    font-family: var(--font-primary), var(--font-secondary), sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 960px; /* Um pouco mais largo */
+    margin: 50px auto;
+    background-color: var(--bg-card);
+    border-radius: 16px; /* Mais arredondado */
+    box-shadow: 0 10px 30px var(--shadow-color);
+    overflow: hidden;
+}
+
+/* --- Header Aprimorado --- */
+header {
+    display: flex;
+    flex-direction: column; /* Empilhar logo e texto */
+    align-items: center; /* Centralizar itens */
+    text-align: center;
+    padding: 40px 30px 30px; /* Mais padding vertical */
+    /* background: linear-gradient(135deg, var(--primary-blue-light), var(--secondary-green-teal)); */
+    background-color: var(--primary-blue-light); /* Azul claro como fundo principal */
+    color: var(--white);
+    border-radius: 16px 16px 0 0;
+    position: relative; /* Para possíveis elementos decorativos */
+}
+
+/* Elemento decorativo opcional */
+/* header::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, var(--bg-card), transparent);
+    z-index: 1;
+} */
+
+.logo {
+    max-height: 80px; /* Logo menor e mais integrada */
+    margin-bottom: 15px; /* Espaço abaixo da logo */
+    /* Remover borda arredondada se a logo já tiver transparência */
+}
+
+header .header-content {
+    /* Container para o texto, se necessário */
+}
+
+header h1 {
+    color: var(--white);
+    font-weight: 700;
+    margin: 0 0 5px 0; /* Ajuste de margem */
+    font-size: 2.6em; /* Tamanho ajustado */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.5px;
+}
+
+header p.subtitle {
+    font-size: 1.15em;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400; /* Peso normal */
+}
+
+/* --- Seções --- */
+section {
+    padding: 35px 40px; /* Padding consistente */
+    margin-bottom: 0; /* Remover margem inferior, controlar espaçamento com padding */
+    border-bottom: 1px solid #eee; /* Linha divisória sutil entre seções */
+}
+
+section:last-of-type {
+    border-bottom: none; /* Remover borda da última seção */
+}
+
+h2 {
+    color: var(--primary-blue-light);
+    font-weight: 700;
+    /* border-bottom: 3px solid var(--secondary-green-teal); */ /* Remover borda inferior antiga */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 1.8em; /* Ajustar tamanho */
+    text-align: center; /* Centralizar títulos de seção */
+    position: relative;
+}
+
+/* Linha decorativa abaixo do H2 */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-green-teal);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- Galeria de Imagens --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Grid responsivo */
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.gallery-item {
+    text-align: center;
+    background-color: var(--bg-page);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /* Sombra já está no card */
+}
+
+.gallery-item p {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* --- FAQ --- */
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    overflow: hidden; /* Para conter o fundo da resposta */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+}
+
+.faq-question {
+    background-color: var(--white);
+    padding: 18px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600; /* Um pouco mais de peso */
+    color: var(--primary-blue-light);
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f9f9f9;
+}
+
+.faq-question.active {
+    background-color: #f0fafa; /* Fundo levemente azulado quando ativo */
+}
+
+.faq-question .arrow {
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    color: var(--secondary-green-teal);
+}
+
+.faq-question.active .arrow {
+    transform: rotate(90deg);
+}
+
+.faq-answer {
+    background-color: #fdfdfd; /* Fundo da resposta ligeiramente diferente */
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    border-top: 1px solid var(--border-subtle); /* Linha sutil separando pergunta da resposta */
+}
+
+.faq-answer p {
+    padding: 20px 0; /* Padding interno */
+    margin: 0;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.faq-answer.active {
+    max-height: 300px; /* Aumentar se necessário */
+    padding: 0 25px; /* Manter padding horizontal, vertical controlado pelo <p> */
+}
+
+/* --- Lista de Cidades --- */
+.city-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    column-count: 2; /* Dividir em colunas */
+    column-gap: 30px;
+}
+
+.city-list li {
+    background-color: transparent; /* Remover fundo */
+    padding: 8px 0 8px 25px; /* Ajustar padding */
+    margin-bottom: 8px;
+    border-left: 4px solid var(--secondary-green-teal); /* Borda verde */
+    color: var(--text-dark);
+    font-weight: 400;
+    position: relative;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* .city-list li::before { */ /* Ícone opcional */
+/*    content: '\\f3c5'; */ /* Exemplo: Ícone de localização FontAwesome */
+/*    font-family: 'Font Awesome 5 Free'; */
+/*    font-weight: 900; */
+/*    color: var(--secondary-green-teal); */
+/*    position: absolute; */
+/*    left: 0; */
+/*    top: 9px; */
+/* } */
+
+.city-list li:hover {
+    border-left-color: var(--primary-blue-light); /* Muda cor da borda no hover */
+    color: var(--primary-blue-light);
+}
+
+/* --- Detalhes do Pedido --- */
+.order-details {
+    display: flex; /* Usar flexbox para alinhar os cards */
+    gap: 25px; /* Espaço entre os cards */
+    justify-content: center; /* Centralizar os cards se houver espaço */
+    margin-bottom: 30px;
+}
+
+.info-card {
+    background-color: var(--bg-page); /* Fundo cinza claro */
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1; /* Ocupar espaço disponível igualmente */
+    min-width: 180px; /* Largura mínima */
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.info-card strong {
+    color: var(--primary-blue-light);
+    font-size: 1.1em; /* Ajustar tamanho */
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.info-card p {
+    font-size: 1.4em; /* Preço/quantidade em destaque */
+    color: var(--text-dark);
+    margin: 0;
+    font-weight: 700;
+}
+
+/* --- Call to Action (CTA) --- */
+.call-to-action {
+    text-align: center;
+    padding: 40px 30px;
+    background-color: var(--secondary-green-teal); /* Fundo verde teal */
+    color: var(--white);
+    border-radius: 0 0 16px 16px; /* Arredondamento inferior */
+    margin-top: -1px; /* Sobrepor levemente a borda da seção anterior */
+    position: relative;
+    z-index: 2;
+}
+
+.call-to-action h2 {
+    color: var(--white);
+    border-bottom: none;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 2em;
+}
+
+/* Remover a linha decorativa do H2 no CTA */
+.call-to-action h2::after {
+    display: none;
+}
+
+.call-to-action p {
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    max-width: 600px; /* Limitar largura do texto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centralizar conteúdo */
+    background-color: var(--white); /* Botão branco */
+    color: var(--secondary-green-teal); /* Texto verde */
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    border: 2px solid transparent;
+}
+
+.whatsapp-button:hover {
+    background-color: #f0fcf9; /* Fundo levemente esverdeado no hover */
+    transform: translateY(-3px) scale(1.03); /* Efeito de levantar e aumentar */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--white); /* Borda branca sutil */
+}
+
+.whatsapp-button .icon {
+    margin-right: 10px;
+    font-size: 1.4em; /* Ícone um pouco menor */
+    /* Adicionar ícone via CSS ou manter no HTML */
+}
+
+.contact-number {
+    margin-top: 25px;
+    font-size: 1.1em; /* Tamanho ajustado */
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 25px 30px;
+    margin-top: 0;
+    background-color: var(--bg-page);
+    /* border-top: 1px solid #ddd; */ /* Remover borda superior, já tem o CTA */
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        border-radius: 12px;
+    }
+
+    header {
+        padding: 30px 20px 20px;
+    }
+
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    header p.subtitle {
+        font-size: 1.1em;
+    }
+
+    section {
+        padding: 25px 20px;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .city-list {
+        column-count: 1; /* Uma coluna em telas menores */
+    }
+
+    .order-details {
+        flex-direction: column; /* Empilhar cards */
+        gap: 15px;
+    }
+
+    .call-to-action {
+        padding: 30px 20px;
+    }
+
+    .whatsapp-button {
+        padding: 14px 25px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.9em;
+    }
+
+    header p.subtitle {
+        font-size: 1em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .faq-question {
+        padding: 15px 20px;
+        font-size: 0.95em;
+    }
+
+    .faq-answer p {
+        font-size: 0.9em;
+    }
+
+    .info-card p {
+        font-size: 1.2em;
+    }
+
+    .call-to-action h2 {
+        font-size: 1.7em;
+    }
+
+    .call-to-action p {
+        font-size: 1em;
+    }
+
+    .whatsapp-button {
+        width: 90%; /* Ocupar mais largura */
+        font-size: 1em;
+    }
+
+    .contact-number {
+        font-size: 1em;
+    }
+}
+
